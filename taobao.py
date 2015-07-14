@@ -5,7 +5,6 @@ import re
 import time
 
 def onepagesearch(link, pages_searched=50):
-    pages_searched = 50
     set_userid = set()
     for i in range(pages_searched):
         link_ini = link + str(44*i)
