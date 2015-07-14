@@ -4,9 +4,11 @@ from bs4 import BeautifulSoup
 import re
 import time
 
+#pages_searched指定在淘宝上每个商品爬几页，默认50页，返回的是店铺id
 def onepagesearch(link, pages_searched=50):
     set_userid = set()
     for i in range(pages_searched):
+        #肉眼观察得淘宝点击下一页offset+44
         link_ini = link + str(44*i)
         try:
             html_ini = request.urlopen(link_ini)
@@ -26,7 +28,7 @@ def onepagesearch(link, pages_searched=50):
             print "can't open the link"
     return set_userid
 
-
+#利用两件商品名分别进行搜索，得到店铺id的交集
 def runit(name1, name2):
     start = time.clock()
     link1_pre = 'http://s.taobao.com/search?q='+name1+'&bcoffset=-4&s='
